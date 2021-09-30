@@ -1,0 +1,9 @@
+### 
+POST http://localhost:5001/api/funcionario/create
+Content-Type: application/json
+
+{
+    "Nome" : "Mario",
+    "Pis" : 123,
+    "DataAdm" : "15/02/2017"
+}
