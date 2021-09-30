@@ -1,0 +1,42 @@
+###
+POST https://localhost:5001/api/marcacao/create
+Content-Type: application/json
+
+{
+    "FuncionarioId": 1,
+    "dataMarcacao": "2021-09-29T08:00:00",
+    "horaEntrada": "2021-09-29T08:00:00",
+    "horaSaidaAlmoco": "2021-09-29T12:00:00",
+    "horaVoltaAlmoco": "2021-09-29T12:00:00",
+    "saida": "2021-09-29T18:00:00"
+
+}
+
+###
+GET  https://localhost:5001/api/marcacao/list
+
+//Buscar Por Id
+###
+GET  https://localhost:5001/api/marcacao/list/4
+
+
+//Deletar
+
+###
+DELETE https://localhost:5001/api/marcacao/delete/1
+
+###
+
+//Update
+PUT  https://localhost:5001/api/marcacao/update
+Content-Type: application/json
+
+{
+    "id": 3,
+    "FuncionarioId": 1,
+    "dataMarcacao": "2021-10-30T19:13:36.231Z",
+    "horaEntrada": "2021-09-30T19:13:36.231Z",
+    "horaSaidaAlmoco": "2021-09-30T19:13:36.231Z",
+    "horaVoltaAlmoco": "2021-09-30T19:13:36.231Z",
+    "saida": "2021-09-30T19:13:36.231Z"
+}

@@ -1,15 +1,31 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace Backend_TYPEPONTO.models
+namespace TypePonto.Models
 {
     public class Funcionario
     {
-        public string nome { get; set; }
-        public int pis { get; set; }
-        public string dataAdm { get; set; }
-        
+
+        public int Id { get; set; }
+        public string Nome { get; set; }
+        public string Pis { get; set; }
+        public double ValorHora { get; set; }
+        public string DataAdm { get; set; }
+
+        public override string ToString() =>
+            $"Nome: {Nome} | PIS: {Pis} | Valor Hora: {ValorHora} | Data de Admição:";
+
+
+        public string calculoData()
+        {
+
+            DateTime data = DateTime.Now;
+
+            this.DataAdm = data.ToString(@"d");
+
+            return DataAdm;
+
+        }
+
     }
 }

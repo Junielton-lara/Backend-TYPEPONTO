@@ -6,13 +6,15 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using TypePonto.Data;
 
-namespace Backend_TYPEPONTO
+namespace TypePonto
 {
     public class Startup
     {
@@ -27,10 +29,21 @@ namespace Backend_TYPEPONTO
         public void ConfigureServices(IServiceCollection services)
         {
 
+            services.AddCors(
+                options =>
+                {
+                    options.AddPolicy("CorsPolicy", builder => builder
+                    .AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+                }
+            );
+
+            services.AddDbContext<DataContext>(
+                options => options.UseInMemoryDatabase("database")
+            );
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Backend_TYPEPONTO", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "TypePonto", Version = "v1" });
             });
         }
 
@@ -41,8 +54,10 @@ namespace Backend_TYPEPONTO
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Backend_TYPEPONTO v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "TypePonto v1"));
             }
+
+            app.UseCors("CorsPolicy");
 
             app.UseHttpsRedirection();
 

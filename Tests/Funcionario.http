@@ -1,9 +1,49 @@
-### 
-POST http://localhost:5001/api/funcionario/create
+
+//Cadastrar
+###
+POST https://localhost:5001/api/funcionario/create
 Content-Type: application/json
 
 {
-    "Nome" : "Mario",
-    "Pis" : 123,
-    "DataAdm" : "15/02/2017"
+    "Nome" : "fellipe",
+    "Pis"  : "123",
+    "ValorHora": 17.5
 }
+
+//Listar
+
+###
+GET  https://localhost:5001/api/funcionario/list
+
+//Buscar Por Id
+
+###
+GET https://localhost:5001/api/funcionario/getbyid/1
+
+//Deletar
+
+###
+DELETE https://localhost:5001/api/funcionario/delete/junin
+
+###
+
+//Update
+PUT  https://localhost:5001/api/funcionario/update
+Content-Type: application/json
+
+{
+    "Id" : "2",
+    "Nome" : "Fellipe",
+    "Pis"  : "654",
+    "ValorHora": 17.5
+}
+
+
+
+
+
+
+
+
+
+
